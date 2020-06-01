@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container">
+      <a href="/"><img src="/img/darcotex-icon.webp" alt="darcotex" class="card-img-top mx-auto m-2" style="width: 40px;"></a>
+      <a href="/"><img src="/img/darcotex-logo.webp" alt="darcotex" class="card-img-top mx-auto m-2" style="height: 40px; width: auto"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          {{#if user}}
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Navegar
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/links">Links</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/links/add">Añadir link</a>
+              
+            </div>
+            </li>
+            <li class="nav-item">
+              <a href="/profile" class="nav-link">Mi perfil</a>
+            </li>
+            <li class="nav-item">
+              <a href="/logout" class="nav-link">Cerrar sesión</a>
+            </li>
+            {{else}}
+              <li class="nav-item">
+                <a href="/signin" class="nav-link">Iniciar sesión</a>
+              </li>
+              <li class="nav-item">
+                <a href="/signup" class="nav-link">Crear cuenta</a>
+              </li>
+          {{/if}}
+           
+        </ul>
+      </div>
+  </div>
+</nav>
