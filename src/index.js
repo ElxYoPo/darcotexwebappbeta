@@ -7,6 +7,7 @@ const flash = require('connect-flash')
 const mySQLStore = require('express-mysql-session')
 const { database } = require('./keys')
 const passport = require('passport')
+const cookieParser= require('cookie-parser')
 
 //inicializaciones
 const app = express()
@@ -31,6 +32,7 @@ app.use(session({
     saveUninitialized: false,
     store: new mySQLStore(database)
 }))
+app.use(cookieParser())
 app.use(flash())
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended: false}))
@@ -52,6 +54,7 @@ app.use((req, res, next) => {
 app.use(require('./routes'))
 app.use(require('./routes/auth'))
 app.use('/links', require('./routes/links'))
+app.use('/cart', require('./routes/cart'))
 
 
 //Public (acceso navegador)

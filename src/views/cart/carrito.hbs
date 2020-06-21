@@ -1,0 +1,27 @@
+{{#if products}}
+<table class="table table-hover table-primary">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Producto</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Monto</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+    <tr>
+      <th scope="row"><img src="../../public/img/products/{{this.products.id['imagen']}}" class="width: 20px;"></th>
+      <td>{{this.producto['nombre']}}</td>
+      <td>{{this.cantidad}}</td>
+      <td>{{this.precio}}</td>
+      <td><a href="/cart/delete/{{this.producto['id']}}">Remover</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <p><b>Monto total: </b>{{precioTotal}}</p>
+</table>
+{{else}}
+<h3>Aún no hay artículos añadidos en el carro. <a href="/shop">¿Por qué no revisas nuestro catálogo?</a></h3>
+{{/if}}
