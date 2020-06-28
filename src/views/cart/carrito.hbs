@@ -12,11 +12,11 @@
   <tbody>
     {{#each products}}
     <tr>
-      <th scope="row"><img src="../../public/img/products/{{this.products.id['imagen']}}" class="width: 20px;"></th>
-      <td>{{this.producto['nombre']}}</td>
+      <th scope="row"><img src="../../public/img/products/{{this.products.id.imagen}}" class="width: 20px;"></th>
+      <td>{{this.producto.nombre}}</td>
       <td>{{this.cantidad}}</td>
       <td>{{this.precio}}</td>
-      <td><a href="/cart/delete/{{this.producto['id']}}">Remover</a></td>
+      <td><a href="/cart/delete/{{this.producto.id}}">Remover</a></td>
     </tr>
     {{/each}}
   </tbody>

@@ -1,17 +1,21 @@
 const express = require('express')
-const router =  express.Router()
+const router = express.Router()
 
+const pool = require('../database')
 const { isLoggedIn, isNotLoggedIn } = require('../lib/out')
 const Cart = require('../lib/cart')
-const { route } = require('./auth')
 
-router.get('/cart', isLoggedIn, (req, res) => {
+router.get('/cart', isLoggedIn, (req, res, err) => {
     if (!req.session.cart) {
         return res.render('cart/carrito', {
-        products: null
+        products: null,
+        totalPrice: 0
         })
     }
     var cart = new Cart(req.session.cart)
+    if(err){
+        throw err
+    }
     res.render('cart/carrito', {
         products: cart.getItems(),
         totalPrice: cart.totalPrice
@@ -35,11 +39,11 @@ router.get('/cart/remove/:id', isLoggedIn, (req, res) => {
     res.redirect('/cart')
 })
 
-router.get('/shop', isLoggedIn, (req, res) => {
+router.get('/', isLoggedIn, (req, res) => {
     res.render('shop/shop')
 })
 
-router.get('/shop/cat/:id', isLoggedIn, (req, res) => {
+router.get('/cat/:id', isLoggedIn, (req, res) => {
     var catid = req.params.id
     var productos = pool.query('SELECT * FROM productos WHERE catId = ?', [catid])
     res.render('shop/cat', {

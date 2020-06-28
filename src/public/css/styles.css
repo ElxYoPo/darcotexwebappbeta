@@ -4,7 +4,7 @@
 body {
     background: #f5f6f5;
     font-family: "Raleway", sans-serif;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .index{
@@ -22,4 +22,15 @@ body {
     background-size: 100%;
     background-position: center center;
 
+}
+
+.carousel-item{
+    height: 400px;
+    width: 600px;
+} 
+.carousel-item img{
+    height: 400px;
+    width: 600px;
+    margin: auto;
+    display: block;
 }
